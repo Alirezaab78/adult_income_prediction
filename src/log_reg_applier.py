@@ -14,3 +14,4 @@ def log_reg_model(X_train, Y_train, X_val, Y_val, class_weight=None):
     print("Classification Report:\n", classification_report(Y_val, y_pred))
     print("Confusion Matrix:\n", confusion_matrix(Y_val, y_pred))
     print("ROC-AUC Score:", roc_auc_score(Y_val, y_pred))
+    return log_reg
