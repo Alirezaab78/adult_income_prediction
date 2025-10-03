@@ -31,5 +31,5 @@ def standard_scaler_and_validation():
     X_val = df_val_onehot_split_scaled.drop(columns=['income_<=50K', 'income_>50K'])
     Y_val = df_val_onehot_split_scaled['income_>50K']
 
-    return X_train, Y_train, X_val, Y_val
+    return X_train, Y_train, X_val, Y_val, scaler
 

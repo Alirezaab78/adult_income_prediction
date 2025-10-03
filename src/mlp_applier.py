@@ -29,7 +29,7 @@ def mlp_model(X_train, Y_train, X_val, Y_val, class_weights=None):
 
     early_stop = EarlyStopping(
         monitor='val_loss',
-        patience=50,
+        patience=10,
         restore_best_weights=True
     )
 
@@ -51,4 +51,4 @@ def mlp_model(X_train, Y_train, X_val, Y_val, class_weights=None):
     print("Classification Report:\n", classification_report(Y_val, y_pred_class))
     print("Confusion Matrix:\n", confusion_matrix(Y_val, y_pred_class))
     print("ROC-AUC Score:", roc_auc_score(Y_val, y_pred_prob))
-    return history
+    return history, model
