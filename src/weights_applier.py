@@ -15,4 +15,5 @@ def get_class_weights(y):
     weights = compute_class_weight(class_weight='balanced',
                                    classes=unique_classes,
                                    y=y)
-    return {cls: w for cls, w in zip(unique_classes, weights)}
+    class_weights_dict = {cls: w for cls, w in zip(unique_classes, weights)}
+    return class_weights_dict
