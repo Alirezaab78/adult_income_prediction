@@ -1,10 +1,10 @@
 from xgboost import XGBClassifier
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def xgboost_model_spetial_params(X_train, Y_train, X_val, Y_val):
+def xgboost_model(X_train, Y_train, X_val, Y_val):
 
     # محاسبه scale_pos_weight بر اساس کلاس‌های نامتوازن
     scale_pos_weight_value = (Y_train.shape[0] - sum(Y_train)) / sum(Y_train)
@@ -58,3 +58,7 @@ def xgboost_model_spetial_params(X_train, Y_train, X_val, Y_val):
     plt.xlabel("Predicted Label")
     plt.ylabel("True Label")
     plt.show()
+
+    print("Classification Report:\n", classification_report(Y_val, y_pred))
+    print("Confusion Matrix:\n", confusion_matrix(Y_val, y_pred))
+    print("ROC-AUC Score:", roc_auc_score(Y_val, y_pred))

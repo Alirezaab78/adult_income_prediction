@@ -1,5 +1,5 @@
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
 
 def log_reg_model(X_train, Y_train, X_val, Y_val, class_weight=None):
     log_reg = LogisticRegression(
@@ -11,5 +11,6 @@ def log_reg_model(X_train, Y_train, X_val, Y_val, class_weight=None):
 
     y_pred = log_reg.predict(X_val)
 
-    print(classification_report(Y_val, y_pred))
+    print("Classification Report:\n", classification_report(Y_val, y_pred))
     print("Confusion Matrix:\n", confusion_matrix(Y_val, y_pred))
+    print("ROC-AUC Score:", roc_auc_score(Y_val, y_pred))

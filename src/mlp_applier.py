@@ -41,7 +41,7 @@ def mlp_model(X_train, Y_train, X_val, Y_val, class_weights=None):
         batch_size=64,
         callbacks=[early_stop],
         verbose=1,
-        class_weights=class_weights,
+        class_weight=class_weights,
     )
 
     y_pred_prob = model.predict(X_val).ravel()
